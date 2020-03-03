@@ -6,7 +6,7 @@ public class None extends Figure {
     }
 
     @Override
-    public String toString() {
-        return "-" + getColorSign();
+    String getFigureSign() {
+        return " ";
     }
 }

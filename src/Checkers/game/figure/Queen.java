@@ -6,7 +6,8 @@ public class Queen extends Figure {
     }
 
     @Override
-    public String toString() {
-        return "Q" + getColorSign();
+    String getFigureSign() {
+        return "Q";
     }
+
 }

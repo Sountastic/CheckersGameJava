@@ -1,43 +1,55 @@
 package Checkers.game;
 
 import Checkers.game.figure.Figure;
+import Checkers.game.figure.None;
+import Checkers.game.figure.Pawn;
 
 import java.util.*;
 
 public class Board {
-    public static int size = 8;
-    //public int size = 8;
     public List<BoardRow> rows = new ArrayList<>();
 
     public Board() {
         for (int i = 0; i < 8; i++) {
-            rows.add(i, new BoardRow(8));
+            rows.add(new BoardRow());
         }
     }
 
     public Figure getFigure(int row, int col) {
-        if (row > 8 || row < 0) {
-            return null;
-        } else {
-            return rows.get(row).getFigure(col);
-        }
+        return rows.get(row).getCols().get(col);
     }
 
     public void setFigure(int row, int col, Figure figure) {
-        if (row >= 0 && row < 8) {
-            rows.get(row).setFigure(col, figure);
-        } else {
-            System.out.println("Row outside range");
+        rows.get(row).getCols().set(col,figure);
+    }
+
+    public void init() {
+        for (int row = 0; row < rows.size(); row++)
+            fillRow(row);
+    }
+
+    private void fillRow(int row) {
+        Figure.Color color = (row < 4) ? Figure.Color.WHITE : Figure.Color.BLACK;
+        int dX = (row % 2 == 0) ? 0 : 1;
+        for (int col = 0; col < rows.size(); col++) {
+            Figure figure;
+            if (row < 3 || row > 4) {
+                figure = (col % 2 == dX) ? new Pawn(color) : new None();
+            } else {
+                figure = new None();
+            }
+            setFigure(row, col, figure);
         }
     }
 
     @Override
     public String toString() {
-        String boardView = "";
 
+        String s = "|-----------------------|\n";
         for (int i = 0; i < rows.size(); i++) {
-            boardView = "\n";
+            s += rows.get(i).toString();
         }
-        return boardView;
+        s += "|-----------------------|\n";
+        return s;
     }
 }

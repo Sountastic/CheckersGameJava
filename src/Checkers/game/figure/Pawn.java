@@ -6,7 +6,8 @@ public class Pawn extends Figure {
     }
 
     @Override
-    public String toString() {
-        return "P" + getColorSign();
+    String getFigureSign() {
+        return "P";
     }
+
 }

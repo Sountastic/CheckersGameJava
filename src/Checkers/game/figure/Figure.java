@@ -17,11 +17,21 @@ public abstract class Figure {
 
     protected String getColorSign() {
         switch (color) {
-            case NONE: return "-";
-            case BLACK: return "B";
-            case WHITE: return "W";
-            default: System.out.println("Unknown color!" + color);
+            case NONE:
+                return " ";
+            case BLACK:
+                return "b";
+            case WHITE:
+                return "w";
+            default:
+                return "x";
         }
-        return null;
+    }
+
+    abstract String getFigureSign();
+
+    @Override
+    public String toString() {
+        return getColorSign() + getFigureSign();
     }
 }

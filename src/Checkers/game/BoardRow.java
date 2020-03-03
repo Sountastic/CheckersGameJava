@@ -6,49 +6,25 @@ import Checkers.game.figure.None;
 import java.util.*;
 
 public class BoardRow {
-    public final int length;
-    public List<Figure> list = new ArrayList<>();
 
-//    public List<Figure> getList() {
-//        return list;
-//    }
-//
-//    public void setList(List<Figure> list) {
-//        this.list = list;
-//    }
+    private List<Figure> cols = new ArrayList<>();
 
-    public BoardRow(int length) {
-        this.length = length;
-        for (int i = 0; i < length; i++) {
-            list.add(new None());
+    public BoardRow() {
+        for (int i = 0; i < 8; i++) {
+            cols.add(new None());
         }
     }
 
-
-    public Figure getFigure(int index) {
-        if (index > length || index < 0) {
-            return null;
-        } else {
-            return list.get(index);
-        }
-    }
-
-    public void setFigure(int index, Figure figure) {
-        if (index <= 0 && index < length) {
-            list.set(index, figure);
-        }
+    public List<Figure> getCols() {
+        return cols;
     }
 
     @Override
     public String toString() {
-        String s = "";
-        for (int i = 0; i < list.size(); i++) {
-            s = "|" + getFigure(i);
+        String s = "|";
+        for (int i = 0; i < cols.size(); i++) {
+            s += cols.get(i) + "|";
         }
-        return s + "|";
-    }
-
-    public void displayBoardRow() {
-        System.out.println(list);
+        return s + "\n";
     }
 }
