@@ -6,7 +6,6 @@ import Checkers.game.figure.None;
 import java.util.*;
 
 public class BoardRow {
-
     private List<Figure> cols = new ArrayList<>();
 
     public BoardRow() {

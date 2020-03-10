@@ -45,11 +45,17 @@ public class Board {
     @Override
     public String toString() {
 
-        String s = "|-----------------------|\n";
-        for (int i = 0; i < rows.size(); i++) {
-            s += rows.get(i).toString();
+//        String s = "|-----------------------|\n";
+        String s = "   ";
+        char startLetter = 'A';
+        for(int j = 0; j < 8; j++) {
+            s += " " + startLetter++ + " ";
         }
-        s += "|-----------------------|\n";
+        s += "\n";
+        for (int i = 0; i < rows.size(); i++) {
+            s += (rows.size()-i)  + " " + rows.get(i).toString();
+        }
+//        s += "  |-----------------------|\n";
         return s;
     }
 }

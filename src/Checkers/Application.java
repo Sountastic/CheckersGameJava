@@ -7,6 +7,7 @@ public class Application {
         Game game = new Game();
         game.init();
         game.displayBoard();
-
+//        game.makeMovePawn();
+        game.displayBoard();
     }
 }

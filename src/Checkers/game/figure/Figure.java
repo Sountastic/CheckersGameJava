@@ -15,6 +15,8 @@ public abstract class Figure {
         return color;
     }
 
+
+
     protected String getColorSign() {
         switch (color) {
             case NONE:

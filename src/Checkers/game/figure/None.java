@@ -9,4 +9,5 @@ public class None extends Figure {
     String getFigureSign() {
         return " ";
     }
+
 }
