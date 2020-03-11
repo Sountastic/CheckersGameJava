@@ -2,17 +2,9 @@ package Checkers.game;
 
 import Checkers.game.figure.Figure;
 import Checkers.game.figure.None;
-import Checkers.game.figure.Pawn;
-
-import java.util.Scanner;
 
 public class Game {
-    private Board board = new Board();
-//    Scanner scanner = new Scanner(System.in);
-//    int fromRow = scanner.nextInt();
-//    int fromCol = scanner.nextInt();
-//    int toRow = scanner.nextInt();
-//    int toCol = scanner.nextInt();
+    private Board board = new Board();git
 
     public void displayBoard() {
         System.out.println(board);
@@ -24,6 +16,25 @@ public class Game {
 
     public void init() {
         board.init();
+    }
+
+    public boolean isMoveValid(Move move) {
+        Figure figureOnStartField = board.getFigure(move.getStartPosition());
+        Figure figureOnEndField = board.getFigure(move.getEndPosition());
+
+        if (figureOnStartField.isMoveValidForFigure(move)) {
+            if (figureOnEndField instanceof None) {
+                if (board.isMoveLegal(move)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    // TODO return Result object
+    public void makeMove(Move move) {
+
     }
 
 //    boolean isEmpty = true;

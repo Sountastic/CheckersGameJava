@@ -3,6 +3,7 @@ package Checkers.game;
 import Checkers.game.figure.Figure;
 import Checkers.game.figure.None;
 import Checkers.game.figure.Pawn;
+import Checkers.util.Position;
 
 import java.util.*;
 
@@ -15,8 +16,17 @@ public class Board {
         }
     }
 
+    //TODO Implement me! PLz
+    public boolean isMoveLegal(Move move) {
+       return true;
+    }
+
     public Figure getFigure(int row, int col) {
         return rows.get(row).getCols().get(col);
+    }
+
+    public Figure getFigure(Position position) {
+        return getFigure(position.getRow(), position.getColumn());
     }
 
     public void setFigure(int row, int col, Figure figure) {
