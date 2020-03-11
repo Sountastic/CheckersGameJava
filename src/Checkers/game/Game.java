@@ -4,7 +4,7 @@ import Checkers.game.figure.Figure;
 import Checkers.game.figure.None;
 
 public class Game {
-    private Board board = new Board();git
+    private Board board = new Board();
 
     public void displayBoard() {
         System.out.println(board);
