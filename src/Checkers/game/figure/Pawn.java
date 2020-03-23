@@ -11,20 +11,6 @@ public class Pawn extends Figure {
 
     @Override
     public boolean isMoveValidForFigure(Move move, Board board) {
-        return false;
-    }
-
-    @Override
-    public boolean isMoveWithHitValid(Move move, Board board) {
-        return false;
-    }
-
-    @Override
-    String getFigureSign() {
-        return "P";
-    }
-
-    public boolean isMoveValidForFigure(Move move) {
         Position start = move.getStartPosition();
         Position end = move.getEndPosition();
 
@@ -33,4 +19,21 @@ public class Pawn extends Figure {
 
         return endRowCorrect && columnCorrect;
     }
+
+    @Override
+    public boolean isMoveWithHitValid(Move move, Board board) {
+        Position start = move.getStartPosition();
+        Position end = move.getEndPosition();
+        if (board.getFigure(move.getEndPosition().getRow(), move.getEndPosition().getColumn()) instanceof None) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    String getFigureSign() {
+        return "P";
+    }
+
 }

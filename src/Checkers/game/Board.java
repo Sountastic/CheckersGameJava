@@ -17,7 +17,6 @@ public class Board {
         }
     }
 
-
     public Figure getFigure(int row, int col) {
         return rows.get(row).getCols().get(col);
     }
@@ -66,7 +65,7 @@ public class Board {
         return s;
     }
 
-    private void makeMove(Move move) {
+    public void makeMove(Move move) {
         Figure f = getFigure(move.getStartPosition().getColumn(), move.getStartPosition().getRow());
         setFigure(move.getEndPosition().getColumn(), move.getEndPosition().getRow(), f);
         setFigure(move.getStartPosition().getColumn(), move.getStartPosition().getRow(), new None());

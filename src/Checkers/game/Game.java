@@ -1,5 +1,8 @@
 package Checkers.game;
 
+import Checkers.game.move.Move;
+import Checkers.game.move.Position;
+
 public class Game {
     private Board board = new Board();
 
@@ -15,5 +18,10 @@ public class Game {
         board.init();
     }
 
-
+//    public void move(){
+//        Position start = new Position();
+//        Position end = new Position();
+//        Move move = new Move(start, end);
+//        board.makeMove(move);
+//    }
 }
