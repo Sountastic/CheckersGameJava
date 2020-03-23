@@ -1,6 +1,7 @@
 package Checkers.game.figure;
 
-import Checkers.game.Move;
+import Checkers.game.Board;
+import Checkers.game.move.Move;
 
 public abstract class Figure {
     protected Color color;
@@ -36,7 +37,9 @@ public abstract class Figure {
         }
     }
 
-    public abstract boolean isMoveValidForFigure(Move move);
+    public abstract boolean isMoveValidForFigure(Move move, Board board);
+
+    public abstract boolean isMoveWithHitValid(Move move, Board board);
 
     abstract String getFigureSign();
 

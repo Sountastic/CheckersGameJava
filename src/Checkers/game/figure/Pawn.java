@@ -1,8 +1,8 @@
 package Checkers.game.figure;
 
 import Checkers.game.Board;
-import Checkers.game.Move;
-import Checkers.util.Position;
+import Checkers.game.move.Move;
+import Checkers.game.move.Position;
 
 public class Pawn extends Figure {
     public Pawn(Color color) {
@@ -10,11 +10,20 @@ public class Pawn extends Figure {
     }
 
     @Override
+    public boolean isMoveValidForFigure(Move move, Board board) {
+        return false;
+    }
+
+    @Override
+    public boolean isMoveWithHitValid(Move move, Board board) {
+        return false;
+    }
+
+    @Override
     String getFigureSign() {
         return "P";
     }
 
-    @Override
     public boolean isMoveValidForFigure(Move move) {
         Position start = move.getStartPosition();
         Position end = move.getEndPosition();

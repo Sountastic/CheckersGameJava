@@ -1,8 +1,8 @@
-package Checkers.util;
+package Checkers.game.move;
 
 public class Position {
-    private final Integer row;
-    private final Integer column;
+    private Integer row;
+    private Integer column;
 
     public Position(Integer row, Integer column) {
         this.row = row;
@@ -16,4 +16,14 @@ public class Position {
     public Integer getColumn() {
         return column;
     }
+
+    @Override
+    public String toString() {
+        return "Position{" +
+                "row=" + row +
+                ", column=" + column +
+                '}';
+    }
 }
+
+

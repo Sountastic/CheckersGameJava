@@ -3,7 +3,8 @@ package Checkers.game;
 import Checkers.game.figure.Figure;
 import Checkers.game.figure.None;
 import Checkers.game.figure.Pawn;
-import Checkers.util.Position;
+import Checkers.game.move.Move;
+import Checkers.game.move.Position;
 
 import java.util.*;
 
@@ -16,10 +17,6 @@ public class Board {
         }
     }
 
-    //TODO Implement me! PLz
-    public boolean isMoveLegal(Move move) {
-       return true;
-    }
 
     public Figure getFigure(int row, int col) {
         return rows.get(row).getCols().get(col);
@@ -30,7 +27,7 @@ public class Board {
     }
 
     public void setFigure(int row, int col, Figure figure) {
-        rows.get(row).getCols().set(col,figure);
+        rows.get(row).getCols().set(col, figure);
     }
 
     public void init() {
@@ -58,14 +55,34 @@ public class Board {
 //        String s = "|-----------------------|\n";
         String s = "   ";
         char startLetter = 'A';
-        for(int j = 0; j < 8; j++) {
+        for (int j = 0; j < 8; j++) {
             s += " " + startLetter++ + " ";
         }
         s += "\n";
         for (int i = 0; i < rows.size(); i++) {
-            s += (rows.size()-i)  + " " + rows.get(i).toString();
+            s += (rows.size() - i) + " " + rows.get(i).toString();
         }
 //        s += "  |-----------------------|\n";
         return s;
+    }
+
+    private void makeMove(Move move) {
+        Figure f = getFigure(move.getStartPosition().getColumn(), move.getStartPosition().getRow());
+        setFigure(move.getEndPosition().getColumn(), move.getEndPosition().getRow(), f);
+        setFigure(move.getStartPosition().getColumn(), move.getStartPosition().getRow(), new None());
+    }
+
+    private boolean isValidMove(Move move) {
+        Figure figureOnStartField = getFigure(move.getStartPosition());
+        Figure figureOnEndField = getFigure(move.getEndPosition());
+
+//        if (figureOnStartField.isMoveValidForFigure(move)) {
+//            if (figureOnEndField instanceof None) {
+//                if (isMoveLegal(move)) {
+//                    return true;
+//                }
+//            }
+//        }
+        return false;
     }
 }

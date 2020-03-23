@@ -1,4 +1,4 @@
-package Checkers.game;
+package Checkers.game.move;
 
 import Checkers.game.figure.Figure;
 

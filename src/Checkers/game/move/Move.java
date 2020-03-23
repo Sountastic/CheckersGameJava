@@ -1,11 +1,8 @@
-package Checkers.game;
-
-import Checkers.util.Position;
-
+package Checkers.game.move;
 
 public class Move {
-    private final Position startPosition;
-    private final Position endPosition;
+    private Position startPosition;
+    private Position endPosition;
 
     public Move(Position startPosition, Position endPosition) {
         this.startPosition = startPosition;
@@ -18,5 +15,13 @@ public class Move {
 
     public Position getEndPosition() {
         return endPosition;
+    }
+
+    @Override
+    public String toString() {
+        return "Move{" +
+                "startPosition=" + startPosition +
+                ", endPosition=" + endPosition +
+                '}';
     }
 }
