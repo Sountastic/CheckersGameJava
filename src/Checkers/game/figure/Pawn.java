@@ -11,24 +11,25 @@ public class Pawn extends Figure {
 
     @Override
     public boolean isMoveValidForFigure(Move move, Board board) {
-        Position start = move.getStartPosition();
-        Position end = move.getEndPosition();
-
-        boolean endRowCorrect = start.getRow() + color.direction == end.getRow();
-        boolean columnCorrect = start.getColumn() - 1 == end.getRow() || start.getColumn() + 1 == end.getColumn();
-
-        return endRowCorrect && columnCorrect;
+        return isMoveDiagonalToEmptyField(move, board, 1);
     }
 
     @Override
     public boolean isMoveWithHitValid(Move move, Board board) {
+        return isMoveDiagonalToEmptyField(move, board, 2);
+        //sprawdzic czy jest figura przeciwnika
+    }
+
+    private boolean isMoveDiagonalToEmptyField(Move move, Board board, int stepLength) {
         Position start = move.getStartPosition();
         Position end = move.getEndPosition();
-        if (board.getFigure(move.getEndPosition().getRow(), move.getEndPosition().getColumn()) instanceof None) {
-            return true;
-        } else {
-            return false;
-        }
+        boolean endRowCorrect = start.getRow() + stepLength * color.direction == end.getRow();
+        boolean endColumnCorrect = start.getColumn() - stepLength == end.getColumn() || start.getColumn() + stepLength == end.getColumn();
+        return (isTargetEmpty(board, end) && endRowCorrect && endColumnCorrect);
+    }
+
+    private boolean isTargetEmpty(Board board, Position end) {
+        return board.getFigure(end.getRow(), end.getColumn()) instanceof None;
     }
 
     @Override

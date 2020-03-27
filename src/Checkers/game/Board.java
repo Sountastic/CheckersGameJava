@@ -6,7 +6,8 @@ import Checkers.game.figure.Pawn;
 import Checkers.game.move.Move;
 import Checkers.game.move.Position;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Board {
     public List<BoardRow> rows = new ArrayList<>();
@@ -27,6 +28,10 @@ public class Board {
 
     public void setFigure(int row, int col, Figure figure) {
         rows.get(row).getCols().set(col, figure);
+    }
+
+    public void setFigure(Position position, Figure figure) {
+        setFigure(position.getRow(), position.getColumn(), figure);
     }
 
     public void init() {
@@ -71,6 +76,7 @@ public class Board {
         setFigure(move.getStartPosition().getColumn(), move.getStartPosition().getRow(), new None());
     }
 
+    //czy potrzebna ???
     private boolean isValidMove(Move move) {
         Figure figureOnStartField = getFigure(move.getStartPosition());
         Figure figureOnEndField = getFigure(move.getEndPosition());

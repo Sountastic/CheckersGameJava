@@ -1,7 +1,9 @@
 package Checkers.game;
 
+import Checkers.game.figure.Figure;
+import Checkers.game.figure.None;
 import Checkers.game.move.Move;
-import Checkers.game.move.Position;
+import Checkers.game.move.UserDialogues;
 
 public class Game {
     private Board board = new Board();
@@ -18,10 +20,24 @@ public class Game {
         board.init();
     }
 
-//    public void move(){
-//        Position start = new Position();
-//        Position end = new Position();
-//        Move move = new Move(start, end);
-//        board.makeMove(move);
-//    }
+    public void doMove(Move move) {
+//        Figure selectedFigure = board.getFigure(move.getStartPosition());
+//        if (selectedFigure.isMoveValidForFigure(move, board)) {
+//            changeFigurePlace(move, selectedFigure);
+//        } else if (selectedFigure.isMoveWithHitValid(move, board)) {
+//            doHit(move);
+//            changeFigurePlace(move, selectedFigure);
+//        }
+        board.makeMove(move);
+    }
+
+    private void changeFigurePlace(Move move, Figure figure) {
+        board.setFigure(move.getEndPosition(), board.getFigure(move.getStartPosition()));
+        board.setFigure(move.getStartPosition(), new None());
+    }
+
+    private void doHit(Move move) {
+        changeFigurePlace(move, board.getFigure(move.getStartPosition()));
+        changeFigurePlace(move, board.getFigure(move.getStartPosition().getRow() + 1, move.getStartPosition().getColumn() + 1));
+    }
 }

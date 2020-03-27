@@ -15,6 +15,7 @@ public class Queen extends Figure {
         Position end = move.getEndPosition();
 
         boolean endRowCorrect = start.getRow() + color.direction == end.getRow();
+        //jak okreslic do ktorego pola moze byc ruch?
         boolean columnCorrect = start.getColumn() == end.getRow() || start.getColumn() + 1 == end.getColumn();
 
         return endRowCorrect && columnCorrect;
@@ -22,15 +23,15 @@ public class Queen extends Figure {
 
     @Override
     public boolean isMoveWithHitValid(Move move, Board board) {
-        //  dostep do board zeby wyciagnac size() ???   getem jakikolwiek wiersz i jego rozmiar ?
 //        iterowac po kolejnych polach zeby sprawdzic czy sa wolne...
         Position start = move.getStartPosition();
         Position end = move.getEndPosition();
-//        if (board.getFigure(move.getEndPosition().getRow(), move.getEndPosition().getColumn()) instanceof None) {
-//            return true;
-//        } else {
+
+        if (board.getFigure(end.getRow(), end.getColumn()) instanceof None) {
+            return true;
+        } else {
             return false;
-//        }
+        }
     }
 
     @Override
